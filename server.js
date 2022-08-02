@@ -40,6 +40,6 @@ app.use('/api/users', userRoute);
 app.use('/api/assets', assetRoute);
 
 const PORT = 8080;
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`server is running at http://localhost:${PORT}/api/`);
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`server is runnin g at http://localhost:${PORT}/api/`);
 });
