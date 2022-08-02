@@ -39,8 +39,8 @@ app.use('/api/pages', pageRoute);
 app.use('/api/users', userRoute);
 app.use('/api/assets', assetRoute);
 
-// const PORT = process.env.PORT || 8080;
-app.listen(process.env.PORT || 8080, () => {
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
   // console.log(`server is runnin g at http://localhost:${PORT}/api/`);
   console.log(`server is runnin g at http://localhost:8080/api/`);
 });
