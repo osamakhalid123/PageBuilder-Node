@@ -18,13 +18,14 @@ const corsOptions = {
 };
 corsOptions.credentials = true;
 app.use(cors(corsOptions));
+// 'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
 
 //Connect to database
 // const MONGO_URI = 'mongodb://localhost:27017/webpage_builder';
-const MONGO_URI =
-  'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
+// const MONGO_URI =
+//   'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(
-  MONGO_URI,
+  process.env.MONGO_URI || 'mongodb://localhost:27017/webpage_builder',
   {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -41,6 +42,12 @@ app.use('/api/', uiRoute);
 app.use('/api/pages', pageRoute);
 app.use('/api/users', userRoute);
 app.use('/api/assets', assetRoute);
+
+// if(process.env.NODE_ENV ==='production'){
+
+//     app.use
+
+// }
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
