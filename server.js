@@ -19,7 +19,9 @@ corsOptions.credentials = true;
 app.use(cors(corsOptions));
 
 //Connect to database
-const MONGO_URI = 'mongodb://localhost:27017/webpage_builder';
+// const MONGO_URI = 'mongodb://localhost:27017/webpage_builder';
+const MONGO_URI =
+  'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(
   MONGO_URI,
   {
