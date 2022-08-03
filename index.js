@@ -22,10 +22,11 @@ app.use(cors(corsOptions));
 
 //Connect to database
 // const MONGO_URI = 'mongodb://localhost:27017/webpage_builder';
-// const MONGO_URI =
-//   'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI =
+  'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(
-  process.env.MONGO_URI || 'mongodb://localhost:27017/webpage_builder',
+  // process.env.MONGO_URI || 'mongodb://localhost:27017/webpage_builder',
+  MONGO_URI,
   {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -42,12 +43,6 @@ app.use('/api/', uiRoute);
 app.use('/api/pages', pageRoute);
 app.use('/api/users', userRoute);
 app.use('/api/assets', assetRoute);
-
-// if(process.env.NODE_ENV ==='production'){
-
-//     app.use
-
-// }
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
