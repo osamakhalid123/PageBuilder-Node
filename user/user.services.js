@@ -1,7 +1,7 @@
 const userModel = require('./user.modal');
 
 const listUsers = async () => {
-  const users = await userModel.find({});
+  const users = await userModel.find({ _id: userId });
   return users;
 };
 

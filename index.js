@@ -71,7 +71,7 @@ mongoose.connect(
   },
 );
 ////////////////////////////////////////////////////
-app.use('/', uiRoute);
+// app.use('/', uiRoute);
 /////////////////////////////////////////////////////
 app.use('/api/', uiRoute);
 app.use('/api/pages', pageRoute);
