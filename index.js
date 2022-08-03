@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     { title: 'Memento', director: 'Christopher Nolan' },
   ]);
 });
-app.get('/apii/', (req, res) => {
+app.get('/aapi/', (req, res) => {
   // Do some work to retrieve movies and request before 10 minutes will get movies from cache
   res.json([
     {
