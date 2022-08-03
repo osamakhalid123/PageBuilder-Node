@@ -30,27 +30,6 @@ var cache = cacheService.cache;
 //   // }
 // );
 
-app.get('/', (req, res) => {
-  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
-  res.json([
-    {
-      title: 'The Lord of the Rings',
-      director: 'Peter Jackson',
-    },
-    { title: 'Memento', director: 'Christopher Nolan' },
-  ]);
-});
-app.get('/aapi/', (req, res) => {
-  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
-  res.json([
-    {
-      title: 'test',
-      director: '1',
-    },
-    { title: 'test', director: '2' },
-  ]);
-});
-
 ////////////////////////////////////////////////////
 
 const corsOptions = {
@@ -64,10 +43,11 @@ app.use(cors(corsOptions));
 
 //Connect to database
 // const MONGO_URI = 'mongodb://localhost:27017/webpage_builder';
-const MONGO_URI =
-  'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
+// const MONGO_URI =
+// 'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(
-  // process.env.MONGO_URI || 'mongodb://localhost:27017/webpage_builder',
+  process.env.MONGO_URI ||
+    'mongodb+srv://pagebuilder:pagebuilder@pagebuilder.ytsht7p.mongodb.net/test',
   MONGO_URI,
   {
     useCreateIndex: true,
@@ -81,18 +61,7 @@ mongoose.connect(
   },
 );
 ////////////////////////////////////////////////////
-const { listPages } = require('../page/page.services');
-const { listUsers } = require('../user/user.services');
-app.get('/test', async (req, res) => {
-  const pages = await listPages();
-  const users = await listUsers();
 
-  res.json([
-    { title: 'test', director: '2' },
-    { title: 'Pages', pages },
-    { title: 'Users', users },
-  ]);
-});
 /////////////////////////////////////////////////////
 app.use('/api/', uiRoute);
 app.use('/api/pages', pageRoute);
