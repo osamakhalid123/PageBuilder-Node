@@ -30,16 +30,16 @@ var cache = cacheService.cache;
 //   // }
 // );
 
-app.get('/', (req, res) => {
-  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
-  res.json([
-    {
-      title: 'The Lord of the Rings',
-      director: 'Peter Jackson',
-    },
-    { title: 'Memento', director: 'Christopher Nolan' },
-  ]);
-});
+// app.get('/', (req, res) => {
+//   // Do some work to retrieve movies and request before 10 minutes will get movies from cache
+//   res.json([
+//     {
+//       title: 'The Lord of the Rings',
+//       director: 'Peter Jackson',
+//     },
+//     { title: 'Memento', director: 'Christopher Nolan' },
+//   ]);
+// });
 
 ////////////////////////////////////////////////////
 
@@ -70,7 +70,9 @@ mongoose.connect(
     console.log('CONNECTED TO MONGODB');
   },
 );
-
+////////////////////////////////////////////////////
+app.use('/', uiRoute);
+/////////////////////////////////////////////////////
 app.use('/api/', uiRoute);
 app.use('/api/pages', pageRoute);
 app.use('/api/users', userRoute);
