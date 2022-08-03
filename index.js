@@ -15,21 +15,20 @@ app.use(express.json());
 var cacheService = require('express-api-cache');
 var cache = cacheService.cache;
 
-app.get(
-  '/',
-  cache('10 minutes'),
-  uiRoute,
-  // (req, res) => {
-  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
-  // res.json([
-  //   {
-  //     title: 'The Lord of the Rings',
-  //     director: 'Peter Jackson',
-  //   },
-  //   { title: 'Memento', director: 'Christopher Nolan' },
-  // ]);
-  // }
-);
+// app.get(
+//   '/',
+//   cache('10 minutes'),
+//   // (req, res) => {
+//   // Do some work to retrieve movies and request before 10 minutes will get movies from cache
+//   // res.json([
+//   //   {
+//   //     title: 'The Lord of the Rings',
+//   //     director: 'Peter Jackson',
+//   //   },
+//   //   { title: 'Memento', director: 'Christopher Nolan' },
+//   // ]);
+//   // }
+// );
 
 ////////////////////////////////////////////////////
 
@@ -61,7 +60,7 @@ mongoose.connect(
   },
 );
 
-app.use('/api/', uiRoute);
+app.use('/api/', cache('10 minutes'), uiRoute);
 app.use('/api/pages', pageRoute);
 app.use('/api/users', userRoute);
 app.use('/api/assets', assetRoute);
