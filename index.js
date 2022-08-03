@@ -11,6 +11,23 @@ const assetRoute = require('./assets/assets.route');
 const app = express();
 app.use(express.json());
 
+//////////////////////////////////////////////////////////
+var cacheService = require('express-api-cache');
+var cache = cacheService.cache;
+
+app.get('/', cache('10 minutes'), (req, res) => {
+  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
+  res.json([
+    {
+      title: 'The Lord of the Rings',
+      director: 'Peter Jackson',
+    },
+    { title: 'Memento', director: 'Christopher Nolan' },
+  ]);
+});
+
+////////////////////////////////////////////////////
+
 const corsOptions = {
   origin: function (origin, callback) {
     callback(null, true);
