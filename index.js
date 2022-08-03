@@ -40,16 +40,16 @@ app.get('/', (req, res) => {
     { title: 'Memento', director: 'Christopher Nolan' },
   ]);
 });
-// app.get('/aapi/', (req, res) => {
-//   // Do some work to retrieve movies and request before 10 minutes will get movies from cache
-//   res.json([
-//     {
-//       title: 'test',
-//       director: '1',
-//     },
-//     { title: 'test', director: '2' },
-//   ]);
-// });
+app.get('/aapi/', (req, res) => {
+  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
+  res.json([
+    {
+      title: 'test',
+      director: '1',
+    },
+    { title: 'test', director: '2' },
+  ]);
+});
 
 ////////////////////////////////////////////////////
 
