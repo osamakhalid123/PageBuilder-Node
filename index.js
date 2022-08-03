@@ -40,16 +40,16 @@ app.get('/', (req, res) => {
     { title: 'Memento', director: 'Christopher Nolan' },
   ]);
 });
-app.get('/aapi/', (req, res) => {
-  // Do some work to retrieve movies and request before 10 minutes will get movies from cache
-  res.json([
-    {
-      title: 'test',
-      director: '1',
-    },
-    { title: 'test', director: '2' },
-  ]);
-});
+// app.get('/aapi/', (req, res) => {
+//   // Do some work to retrieve movies and request before 10 minutes will get movies from cache
+//   res.json([
+//     {
+//       title: 'test',
+//       director: '1',
+//     },
+//     { title: 'test', director: '2' },
+//   ]);
+// });
 
 ////////////////////////////////////////////////////
 
@@ -81,7 +81,18 @@ mongoose.connect(
   },
 );
 ////////////////////////////////////////////////////
-// app.use('/', uiRoute);
+const { listPages } = require('../page/page.services');
+const { listUsers } = require('../user/user.services');
+app.use('/test', async (req, res) => {
+  const pages = await listPages();
+  const users = await listUsers();
+
+  res.json([
+    { title: 'test', director: '2' },
+    { title: 'Pages', pages },
+    { title: 'Users', users },
+  ]);
+});
 /////////////////////////////////////////////////////
 app.use('/api/', uiRoute);
 app.use('/api/pages', pageRoute);
