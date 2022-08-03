@@ -83,7 +83,7 @@ mongoose.connect(
 ////////////////////////////////////////////////////
 const { listPages } = require('../page/page.services');
 const { listUsers } = require('../user/user.services');
-app.use('/test', async (req, res) => {
+app.get('/test', async (req, res) => {
   const pages = await listPages();
   const users = await listUsers();
 
